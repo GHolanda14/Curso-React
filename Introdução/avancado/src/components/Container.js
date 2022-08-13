@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const Container = ({children}) => {
+const Container = ({ children }) => {
   return (
     <>
-        <h1>Aqui temos um container</h1>
-        {children}
+      <h1>Aqui temos um container</h1>
+      {children}
     </>
-  )
-}
+  );
+};
 
-export default Container
+export default Container;

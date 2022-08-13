@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Fragmento = () => {
   return (
     <>
-        <p>Fragmento</p>
+      <p>Fragmento</p>
     </>
-  )
-}
+  );
+};
 
-export default Fragmento
+export default Fragmento;

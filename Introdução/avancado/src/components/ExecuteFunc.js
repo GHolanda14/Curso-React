@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const ExecuteFunc = ({myFunction}) => {
+const ExecuteFunc = ({ myFunction }) => {
   return (
     <>
-        <button onClick={myFunction}>Executar função</button>
+      <button onClick={myFunction}>Executar função</button>
     </>
-  )
-}
+  );
+};
 
-export default ExecuteFunc
+export default ExecuteFunc;

@@ -11,20 +11,27 @@ import LearningProps from "./components/LearningProps";
 import ListRender from "./components/ListRender";
 import ManageData from "./components/ManageData";
 import Message from "./components/Message";
+import UserDetails from "./components/UserDetails";
 
 function App() {
   const cars = [
-    {id:1, marca: "BMW", cor: "Azul", newCar: false, valor: 78902 },
-    {id:2, marca: "Fiat", cor: "Vermelho", newCar: true, valor: 231000 },
-  ]
+    { id: 1, marca: "BMW", cor: "Azul", newCar: false, valor: 78902 },
+    { id: 2, marca: "Fiat", cor: "Vermelho", newCar: true, valor: 231000 },
+  ];
+
+  const pessoas = [
+    { id: 1, nome: "Beatriz", profissao: "Engenheira ambiental", idade: 21 },
+    { id: 2, nome: "Gabriel", profissao: "Analista de Sistemas", idade: 23 },
+    { id: 3, nome: "Pedro", profissao: "Estudante", idade: 16 },
+  ];
 
   const funcEvento = () => console.log("Executando função por evento!");
 
-  const [msg,setMsg] = useState("");
- 
+  const [msg, setMsg] = useState("");
+
   const handleMsg = (msg) => {
     setMsg(msg);
-  }
+  };
 
   return (
     <div className="App">
@@ -47,14 +54,22 @@ function App() {
           valor={car.valor}
         />
       ))}
-      <Fragmento/>
+      <Fragmento />
       <Container>
         <h2>E dentro dele, um filho</h2>
         <h2>Ou seriam 2? rsrsrs</h2>
       </Container>
-      <ExecuteFunc myFunction={funcEvento}/>
-      <Message msg={msg}/>
-      <ChangeMessage handleMsg={handleMsg}/>
+      <ExecuteFunc myFunction={funcEvento} />
+      <Message msg={msg} />
+      <ChangeMessage handleMsg={handleMsg} />
+      {pessoas.map((pessoa) => (
+        <UserDetails
+          key={pessoa.id}
+          nome={pessoa.nome}
+          profissao={pessoa.profissao}
+          idade={pessoa.idade}
+        />
+      ))}
     </div>
   );
 }
