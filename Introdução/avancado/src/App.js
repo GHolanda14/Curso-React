@@ -1,6 +1,7 @@
 import './App.css';
 
 import Rocks from "./assets/rocks.jpg";
+import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <div>
         <img src={Rocks} alt="Pedrinhas amontoadas" height="300px"/>
       </div>
+      <ListRender/>
     </div>
   );
 }
