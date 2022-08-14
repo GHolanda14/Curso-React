@@ -10,11 +10,11 @@ const Game = ({ gameOver }) => {
       <h3 className="dica">
         Dica sobre a palavra: <span>Dica...</span>
       </h3>
+      <p>VocÊ ainda tem X tentativa(s)</p>
       <div className="palavraContainer">
         <span className="letra">A</span>
         <span className="vazio"></span>
       </div>
-
       <div className="letrasContainer">
         <p>Tente adivinhar uma letra da palavra:</p>
         <form>
