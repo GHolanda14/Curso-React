@@ -13,7 +13,7 @@ const Game = ({
   score,
 }) => {
   const [letter, setLetter] = useState("");
-    const letterInputRef = useRef(null);
+  const letterInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();

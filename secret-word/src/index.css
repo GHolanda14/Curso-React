@@ -15,9 +15,9 @@ body {
   color: white;
 }
 
-button{
+button {
   font-size: 1.2em;
-  color: #FFF;
+  color: #fff;
   padding: 0 45px;
   background-color: darkslateblue;
   border: 2px solid aliceblue;
@@ -29,6 +29,6 @@ button{
   transition: 0.4s;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(105, 88, 212);
 }
