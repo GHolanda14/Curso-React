@@ -24,7 +24,6 @@ function App() {
   const [words] = useState(wordsList);
 
   const [pickedCategory, setPickedCategory] = useState("");
-  const [pickedWord, setPickedWord] = useState("");
   const [letters, setLetters] = useState("");
 
   const [guessedLetters, setGuessedLetters] = useState([]);
@@ -55,7 +54,6 @@ function App() {
     wordLetters = wordLetters.map((l) => l.toLowerCase());
 
     setPickedCategory(category);
-    setPickedWord(word);
     setLetters(wordLetters);
 
     setGameStage(stages[1].nome);
@@ -123,7 +121,6 @@ function App() {
         <Game
           verifyLetter={verifyLetter}
           pickedCategory={pickedCategory}
-          pickedWord={pickedWord}
           letters={letters}
           guessedLetters={guessedLetters}
           wrongLetters={wrongLetters}
