@@ -59,10 +59,11 @@ function App() {
     setGameStage(stages[1].nome);
   }, [pickWordAndCategory]);
 
-  //Game over
+  //Checagem se a letra está na palavra
   const verifyLetter = (letter) => {
     const normalizedLetter = letter.toLowerCase();
 
+    //Se já está na lista de acertos ou erros
     if (
       guessedLetters.includes(normalizedLetter) ||
       wrongLetters.includes(normalizedLetter)
@@ -70,6 +71,7 @@ function App() {
       return;
     }
 
+    //Se a letra está dentro da palavra
     if (letters.includes(normalizedLetter)) {
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
@@ -83,12 +85,14 @@ function App() {
       setGuesses((actualGuesses) => actualGuesses - 1);
     }
   };
+
+  //Limpando a lista de letras
   const clearLetterStates = () => {
     setGuessedLetters([]);
     setWrongLetters([]);
   };
 
-  //Monitora os erros
+  //Toda vez que a dependência guesses sofrer alguma alteração, faça o if
   useEffect(() => {
     if (guesses <= 0) {
       //reset all states
@@ -99,10 +103,13 @@ function App() {
 
   //Monitora a condição de vitória
   useEffect(() => {
-    const uniqueLetters = [...new Set(letters)];
+    const uniqueLetters = [...new Set(letters)]; //Objeto com valores únicos
 
-    if (uniqueLetters.length === guessedLetters.length) {
-      setScore((actualScore) => (actualScore += 100));
+    if (
+      uniqueLetters.length === guessedLetters.length &&
+      uniqueLetters.length > 0
+    ) {
+      setScore((actualScore) => actualScore + 100);
       startGame();
     }
   }, [guessedLetters, letters, startGame]);
