@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { useFetch } from "./hooks/useFetch";
 
-const url = "http://localhost:3001/products";
+const url = "http://localhost:3000/products";
 
 function App() {
   const [nome, setNome] = useState("");
@@ -22,6 +22,11 @@ function App() {
     setPreco("");
   };
 
+
+  const deletarProd = (id) => {    
+    httpConfig(id,"DELETE");
+  }
+
   return (
     <div className="App">
       <h1>Lista de produtos</h1>
@@ -33,7 +38,8 @@ function App() {
           {itens &&
             itens.map((p) => (
               <li key={p.id}>
-                {p.name} - R$ {p.price}{" "}
+                {p.name} - R$ {p.price}
+                <button onClick={()=> deletarProd(p.id)}>Deletar</button> 
               </li>
             ))}
         </ul>

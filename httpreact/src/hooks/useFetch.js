@@ -7,8 +7,10 @@ export const useFetch = (url) => {
   const [method, setMethod] = useState(null);
   const [callFetch, setCallFetch] = useState(false);
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const [itemId, setItemId] = useState(null);
 
   const httpConfig = async (dados, method) => {
     if (method === "POST") {
@@ -19,42 +21,56 @@ export const useFetch = (url) => {
         },
         body: JSON.stringify(dados),
       });
+    } else if (method === "DELETE") {
+      setConfig({
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
     setMethod(method);
+    setItemId(dados);
   };
 
   useEffect(() => {
     const fetchData = async () => {
-        setLoading(true);
-        try{
-            const res = await fetch(url);
+      setLoading(true);
+      try {
+        const res = await fetch(url);
 
-      const json = await res.json();
+        const json = await res.json();
 
-      setDados(json);
-        }
-        catch(error){
-            setError("Houve um erro no carregamento de dados!")
-        }
+        setDados(json);
+      } catch (error) {
+        setError("Houve um erro no carregamento de dados!");
+      }
       setLoading(false);
     };
     fetchData();
-  }, [url,callFetch]);
+  }, [url, callFetch]);
 
   useEffect(() => {
     const httpRequest = async () => {
-        if(method === "POST"){
-            let fetchOptions = [url,config];
+        let json;
+      if (method === "POST") {
+        let fetchOptions = [url, config];
 
-            const res = await fetch(...fetchOptions);
-            
-            const json = await res.json();
+        const res = await fetch(...fetchOptions);
 
-            setCallFetch(json);
-        }
-    }
+        json = await res.json();
+
+      } else if (method === "DELETE") {
+        let deleteUrl = `${url}/${itemId}`;
+
+        const res = await fetch(deleteUrl,config);
+
+        json = await res.json();
+      }
+      setCallFetch(json);
+    };
     httpRequest();
-  },[config,method,url]);
+  }, [config, method, url,itemId]);
 
   return { dados, httpConfig, loading, error };
 };
