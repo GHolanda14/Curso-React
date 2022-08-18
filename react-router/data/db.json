@@ -1,3 +1,24 @@
 {
-    "coisas": []
-}
+    "produtos": [
+      {
+        "id": 1,
+        "name": "Camisa",
+        "price": 59.9
+      },
+      {
+        "id": 2,
+        "name": "Calça vermelha",
+        "price": 90
+      },
+      {
+        "name": "boné",
+        "price": "12",
+        "id": 13
+      },
+      {
+        "name": "teste",
+        "price": "31",
+        "id": 20
+      }
+    ]
+  }
