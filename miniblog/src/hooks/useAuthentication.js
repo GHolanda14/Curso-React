@@ -56,10 +56,40 @@ export const useAuthentication = () => {
     return () => setCancelled(true);
   }, []);
 
+  const logout = () =>{
+    checkIfIsCancelled();
+    signOut(auth);
+  }
+
+  const login = async(data) =>{
+    checkIfIsCancelled();
+
+    setLoading(true);
+    setError("");
+
+    try{
+      await signInWithEmailAndPassword(auth,data.email,data.password)
+      setLoading(false)
+    }catch(error){
+      let statusError = error.message;
+
+      if(statusError.includes("user-not-found")){
+        setError("Usuário não encontrado!"); 
+      }else if(statusError.includes("wrong-password")){
+        setError("Senha incorreta!"); 
+      }else{
+        setError("Ocorreu um erro, tente novamente mais tarde!");
+      }
+      setLoading(false);
+    }
+  }
+
   return {
     auth,
     createUser,
     error,
     loading,
+    logout,
+    login
   };
 };

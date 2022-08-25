@@ -7,34 +7,32 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-const [error,setError] = useState("");
-const {loading, error: authError, createUser} = useAuthentication();
+  const [error, setError] = useState("");
+  const { loading, error: authError, createUser } = useAuthentication();
 
-  const handleSubmit = async (e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if(password !== confirmPassword){
-        setError("As senhas precisam ser iguais!");
-        return
+    if (password !== confirmPassword) {
+      setError("As senhas precisam ser iguais!");
+      return;
     }
 
     const user = {
-        nome,
-        email,
-        password
-    }
+      nome,
+      email,
+      password,
+    };
 
     const res = await createUser(user);
-        
-    if(authError === null){
-      setNome("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+  };
+
+  useEffect(()=>{
+    if (authError) {
+      setError(authError);
     }
-    
-  }
+  },[authError])
 
   return (
     <div className={styles.register}>
@@ -57,7 +55,7 @@ const {loading, error: authError, createUser} = useAuthentication();
             type="email"
             name="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="E-mail do usuário"
           />
@@ -68,7 +66,7 @@ const {loading, error: authError, createUser} = useAuthentication();
             type="password"
             name="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Insira sua senha"
           />
@@ -79,15 +77,18 @@ const {loading, error: authError, createUser} = useAuthentication();
             type="password"
             name="confirmPassword"
             value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
             placeholder="Confirme sua senha"
           />
         </label>
         {!loading && <button className="btn">Cadastrar</button>}
-        {loading && <button className="btn" disabled>Aguarde...</button>}
+        {loading && (
+          <button className="btn" disabled>
+            Aguarde...
+          </button>
+        )}
         {error && <p className="error">{error}</p>}
-        {authError && <p className="error">{authError}</p>}        
       </form>
     </div>
   );
