@@ -1,0 +1,39 @@
+.dashboard{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dashboard h2{
+    font-size: 2.3em;
+}
+
+.dashboard > p{
+    color: rgb(168, 154, 154);
+}
+
+.post_body, .post_header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    width: 80%;
+}
+
+.post_header{
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+}
+
+.post_body{
+    align-items: center;
+    border-bottom: 2px solid #eee;
+}
+
+.post_body a,
+.post_body button{
+    margin: 0 5px;
+    height: 30px;
+    width: 100px;
+    font-size: .7em;
+}

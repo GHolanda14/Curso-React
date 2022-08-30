@@ -1,0 +1,28 @@
+.post_detail{
+    margin-bottom: 2em;
+
+}
+
+.post_detail img{
+    max-width: 600px;
+}
+
+.tagsList{
+    display: flex;
+    margin-bottom: 1.5em;
+}
+
+.tagsList p{
+    font-size: .9em;
+    margin-right: .7em;
+}
+
+.tagsList p > span{
+    font-weight: bold;
+}
+
+.post_detail > p{
+    font-style: italic;
+    font-weight: 300;
+    font-size: .9em;
+}

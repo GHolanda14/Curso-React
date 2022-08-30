@@ -1,0 +1,17 @@
+.home{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search_form{
+    max-width: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.search_form input{
+    width: 50%;
+}

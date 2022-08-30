@@ -1,0 +1,25 @@
+.post{
+    text-align: center;
+}
+
+.post img{
+    max-width: 60vw;
+    max-height: 70vh;
+}
+
+.post > p{
+    font-style: italic;
+}
+
+.tags{
+    display: flex;
+    justify-content: center;
+}
+
+.tags p{
+    margin-right: .6em;
+}
+
+.tags p > span{
+    font-weight: bold;
+}
