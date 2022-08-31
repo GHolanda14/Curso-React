@@ -21,6 +21,7 @@ import CreatePost from "./Pages/CreatePost/CreatePost";
 import NotFound from "./Pages/NotFound/NotFound";
 import Search from "./Pages/Search/Search";
 import Post from "./Pages/Post/Post";
+import EditPost from "./Pages/EditPost/EditPost";
 
 function App() {
   const [user, setUser] = useState(undefined);
@@ -53,6 +54,7 @@ function App() {
               <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>} />
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login"/>}/>
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login"/>}/>
+              <Route path="/posts/edit/:id" element={user ? <EditPost/> : <Navigate to="/login"/>}/>
               <Route path="*" element={<NotFound/>}/>
             </Routes>
           </div>
