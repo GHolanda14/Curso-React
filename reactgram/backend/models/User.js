@@ -5,8 +5,8 @@ const { Schema } = moogoose;
 const userSchema = new Schema({
     nome: String,
     email: String,
-    password: String,
-    perfil: String, 
+    senha: String,
+    imagemPerfil: String,
     bio: String,
 },
 {

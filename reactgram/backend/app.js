@@ -1,4 +1,5 @@
 require("dotenv").config();
+//DotEnv são as variáveis de ambiente!
 
 const express = require("express");
 const cors = require("cors");
@@ -12,7 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-//Resolvendo o cors
+//Resolvendo o cors (Cross Origin Resource Sharing)
+//cors conversa entre servers
 app.use(cors({credentials: true, origin: "http://localhost:3000"}))
 
 //Diretório de Upload
@@ -20,7 +22,6 @@ app.use("/uploads", express.static(path.join(__dirname,"/uploads")))
 
 //Conexão com DB
 require("./config/db.js")
-
 
 //Routes
 app.use(router);
