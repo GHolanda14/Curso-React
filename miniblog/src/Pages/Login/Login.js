@@ -53,7 +53,7 @@ const Login = () => {
             placeholder="Insira sua senha"
           />
         </label>
-        {!loading && <button className="btn">Cadastrar</button>}
+        {!loading && <button className="btn">Entrar</button>}
         {loading && (
           <button className="btn" disabled>
             Aguarde...

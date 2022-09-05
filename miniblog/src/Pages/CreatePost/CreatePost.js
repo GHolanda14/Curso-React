@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
@@ -14,23 +14,27 @@ const CreatePost = () => {
   const [formError, setFormError] = useState("");
   const navigate = useNavigate();
 
-  const {loading, error} = useAuthentication();
-  const {user} = useAuthValue();
-  const {insertDocument, response} = useInsertDocument("posts");
+  const { loading, error } = useAuthentication();
+  const { user } = useAuthValue();
+  const { insertDocument, response } = useInsertDocument("posts");
 
   const handleSubmit = (e) => {
+    let erro = null;
     e.preventDefault();
     setFormError("");
 
     try {
       new URL(imgUrl);
     } catch (error) {
-      setFormError("A imagem precisa ser uma URL")
+      erro = "A imagem precisa ser uma URL";
     }
 
-    if(formError) return;
+    if (erro) {
+      setFormError(erro);
+      return;
+    }
 
-    const tagsArray = tags.split(",").map(tag => tag.trim().toLowerCase())
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
     insertDocument({
       title,
@@ -38,10 +42,10 @@ const CreatePost = () => {
       body,
       tagsArray,
       uid: user.uid,
-      createdBy: user.displayName
-    })
-   navigate("/");
-  }
+      createdBy: user.displayName,
+    });
+    navigate("/");
+  };
 
   return (
     <div className={styles.create_post}>
@@ -91,8 +95,16 @@ const CreatePost = () => {
         </label>
         {response.error && <p className="error">{response.error}</p>}
         {formError && <p className="error">{formError}</p>}
-        {!response.loading && <button type="submit" className="btn">Criar</button>}
-        {response.loading && <button type="submit" className="btn" disabled>Aguarde...</button>}
+        {!response.loading && (
+          <button type="submit" className="btn">
+            Criar
+          </button>
+        )}
+        {response.loading && (
+          <button type="submit" className="btn" disabled>
+            Aguarde...
+          </button>
+        )}
       </form>
     </div>
   );
