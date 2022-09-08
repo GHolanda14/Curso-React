@@ -2,13 +2,14 @@ import styles from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthValue } from "../context/AuthContext";
+import { AppBar } from "@mui/material";
 
 const NavBar = () => {
   const { user } = useAuthValue();
   const { logout } = useAuthentication();
 
   return (
-    <nav className={styles.navbar}>
+    <AppBar>
       <NavLink to="/" className={styles.brand}>
         Mini <span>Blog</span>
       </NavLink>
@@ -75,7 +76,7 @@ const NavBar = () => {
           </li>
         )}
       </ul>
-    </nav>
+    </AppBar>
   );
 };
 

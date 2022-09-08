@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 
 import styles from "./EditPost.module.css";
@@ -17,7 +16,6 @@ const EditPost = () => {
   const [formError, setFormError] = useState("");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const { user } = useAuthValue();
 
   useEffect(() => {
     if (post) {

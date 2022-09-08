@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
-import { useAuthentication } from "../../hooks/useAuthentication";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
 
 import styles from "./CreatePost.module.css";
@@ -14,7 +13,6 @@ const CreatePost = () => {
   const [formError, setFormError] = useState("");
   const navigate = useNavigate();
 
-  const { loading, error } = useAuthentication();
   const { user } = useAuthValue();
   const { insertDocument, response } = useInsertDocument("posts");
 
